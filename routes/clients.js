@@ -5,6 +5,7 @@ import {
     getClients,
     deleteClient,
     updateClient,
+    login
 } from "../controllers/clients.js";
 
 const router = express.Router();
@@ -18,6 +19,8 @@ router.get('/:id', getClient);
 
 router.delete('/:id', deleteClient);
 
-router.patch('/:id', updateClient);
+router.put('/:id', updateClient);
+
+router.post('/login',login)
 
 export default router;

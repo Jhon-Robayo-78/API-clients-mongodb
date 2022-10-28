@@ -1,9 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
 import clientRoutes from "./routes/clients.js";
+import { PORT, _connectDB } from "./controllers/db.js";
 
+_connectDB()
 const app = express();
-const PORT = 8080;
 
 app.use(bodyParser.json());
 
@@ -16,3 +17,6 @@ app.listen(
 
 app.get('/', (req, res) => res.send('Hello from my api homepage'));
 
+app.use((req,res)=>{
+    res.status(404).send({"status":"Error 404"}) 
+})
